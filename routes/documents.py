@@ -113,10 +113,16 @@ def export_document(doc_id: str):
     fmt = (body.get("format") or "docx").lower()
     if fmt != "docx":
         return jsonify({"error": {"code": "VALIDATION_ERROR", "message": "Only docx export supported for now"}}), 400
-
-    segments = load_doc_segments(current_app.config, doc_id)
-    if segments is None:
-        return jsonify({"error": {"code": "NOT_FOUND", "message": "Unknown doc_id"}}), 404
-
+    
+    # Use segments from frontend request body (with latest user edits)
+    # If not provided, fall back to loading from disk
+    segments = body.get("segments")
+    
+    if not segments:
+        segments = load_doc_segments(current_app.config, doc_id)
+    
+    if segments is None or not segments:
+        return jsonify({"error": {"code": "NOT_FOUND", "message": "Unknown doc_id or no segments"}}), 404
+    
     filename = export_docx(doc_id=doc_id, segments=segments, exports_dir=current_app.config["EXPORTS_DIR"])
     return jsonify({"download_url": f"/downloads/{filename}"})
