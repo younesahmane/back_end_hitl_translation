@@ -1,0 +1,15 @@
+Flask==3.0.3
+flask-cors==4.0.1
+python-docx==1.1.2
+pypdf==5.1.0
+Werkzeug==3.0.3
+
+
+# Optional (real agentic mode). If heavy, use: AGENTS_MODE=stub
+langdetect==1.0.9
+sacrebleu==2.4.2
+jsonschema==4.23.0
+sentence-transformers==3.0.1
+transformers==4.44.2
+torch>=2.1.0
+faiss-cpu==1.8.0.post1
