@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtualenv
+.venv/
+venv/
+env/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+
+# Logs
+*.log
+
+# Runtime storage (your project)
+storage/
+storage/**
+
+# Uploads / exports / downloads (if separate)
+uploads/
+exports/
+downloads/
+archive/
+
+# FAISS / indexes
+*.faiss
+*.index
+
+# JSONL/JSON data generated at runtime
+*.jsonl
+master.jsonl
+monitor_state.json
+
+# Local configs / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Jupyter
+.ipynb_checkpoints/
+
+# HF / Torch caches (often huge)
+.cache/
+huggingface/
+transformers/
+torch/
+**/.cache/
+
+# Model weights (if you accidentally placed them in repo folders)
+*.bin
+*.safetensors
+*.pt
+*.pth
+*.onnx
